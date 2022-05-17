@@ -70,6 +70,4 @@ constructor(props) {
 export default compose(
     //bind querie and mutation together
 graphql(getAuthorsQuery, {name:"getAuthorsQuery"}),
-graphql(addBookMutation, {name:"addBookMutation"})
-)
-(AuthorList);
+graphql(addBookMutation, {name:"addBookMutation"}))(AuthorList);

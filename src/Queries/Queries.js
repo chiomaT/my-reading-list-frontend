@@ -1,6 +1,4 @@
-import React, { Component } from "react";
 import { gql } from "@apollo/client";
-import { graphql } from "@apollo/client/react/hoc";
 
 const getBooksQuery = gql`
   {
@@ -29,21 +27,21 @@ const addBookMutation = gql`
   }
 `;
 const getBookQuery = gql`
-query($id:ID){
-book(id:$id) {
-    id
-    name
-    genre
-    author{
+  query($id: ID) {
+    book(id: $id) {
+      id
+      name
+      genre
+      author {
         id
         name
         age
-        books{
-            name
-            id
+        books {
+          name
+          id
         }
+      }
     }
-}
-}
+  }
 `;
-export { getBooksQuery, getAuthorsQuery, addBookMutation ,getBookQuery};
+export { getBooksQuery, getAuthorsQuery, addBookMutation, getBookQuery };
