@@ -1,25 +1,27 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from "react";
+import { ApolloClient, ApolloProvider, InMemoryCache } from "@apollo/client";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+//components
+import BookList from "../src/Components/BookList";
+import AuthorList from "../src/Components/AddBook";
+
+//apollo client setup
+const client = new ApolloClient({
+  uri: process.env.REACT_APP_BACKEND_URI,
+  cache: new InMemoryCache(),
+});
+class App extends Component {
+  render() {
+    return (
+      <ApolloProvider client={client}>
+        <div className="main">
+          <h1>My Reading List</h1>
+          <BookList />
+          <AuthorList />
+        </div>
+      </ApolloProvider>
+    );
+  }
 }
 
 export default App;
